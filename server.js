@@ -7,7 +7,7 @@ const app = express();
 
 const client = new MongoClient(process.env.FINAL_URL);
 
-app.use(cors({ origin: 'http://localhost:5002' }));
+app.use(cors({ origin: 'http://127.0.0.1:5500' }));
 app.use(express.json()); 
 
 app.post('/submit-game-data', async (req, res) => {
@@ -52,6 +52,33 @@ app.post('/submit-game-data', async (req, res) => {
         await client.close();
     }
 });
+
+app.get('/game-data', async (req, res) => {
+    try {
+        await client.connect();
+        const db = client.db('DEV5');
+        const collection = db.collection('Godot');
+        
+        // Fetch all data or apply filters as necessary
+        const gameData = await collection.find({}).toArray();
+
+        res.status(200).send({
+            status: "Success",
+            message: "Fetched game data successfully",
+            data: gameData
+        });
+    } catch (error) {
+        console.error("Error fetching data:", error);
+        res.status(500).send({
+            status: "Error",
+            message: "Failed to fetch game data",
+            error: error.message
+        });
+    } finally {
+        await client.close();
+    }
+});
+
 
 const PORT = process.env.PORT || 5002;
 app.listen(PORT, () => {
