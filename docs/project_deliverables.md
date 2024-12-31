@@ -33,6 +33,8 @@
 ```plaintext
 Player Actions -> GameManager -> API Endpoint -> MongoDB (Validation) -> API Endpoint -> Visualization
 ```
+![Example Image](Flowchart.png)
+
 
 - **Step 1: Player Actions**: Every interaction by the player (e.g., losing a life, jumping, collecting coins) is tracked in the game.
 - **Step 2: GameManager**: The game logic is handled here. It processes data and sends it to the API endpoint.
