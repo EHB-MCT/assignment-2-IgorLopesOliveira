@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Data Visualization</title>
     <style>
+        /* General body styling for the page */
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -18,6 +19,7 @@
             margin-top: 30px;
             text-align: center;
         }
+        /* Styling for the game data table */
         table {
             width: 80%;
             margin: 0 auto;
@@ -52,9 +54,10 @@
 
     <h1>Game Data Visualization</h1>
 
-    <!-- Table to display the game data -->
+    <!-- Container to display the game data in a table format -->
     <div id="game-data-container">
         <h2>Game Data Table</h2>
+        <!-- Table structure to hold the game data -->
         <table id="game-data-table">
             <thead>
                 <tr>
@@ -66,37 +69,43 @@
                 </tr>
             </thead>
             <tbody>
-                <!-- Data will be inserted here dynamically -->
+                <!-- Data rows will be dynamically inserted here -->
             </tbody>
         </table>
     </div>
 
-    <!-- Chart to visualize the game data -->
+    <!-- Container for displaying the game data chart -->
     <div class="chart-container">
         <h2>Game Data Visualization (Chart)</h2>
+        <!-- Chart will be rendered on this canvas -->
         <canvas id="gameDataChart"></canvas>
     </div>
 
+    <!-- External Chart.js library for chart visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        // Fetch game data from the backend
+        /* Fetch game data from the backend using the API */
         fetch('http://localhost:5002/game-data')
             .then(response => response.json())
             .then(data => {
+                // If the data fetch is successful, display the data in both table and chart
                 if (data.status === "Success") {
-                    displayGameData(data.data);
-                    displayChart(data.data);
+                    displayGameData(data.data);  // Function to display data in table
+                    displayChart(data.data);     // Function to visualize data in chart
                 } else {
                     console.error("Failed to fetch data:", data.message);
                 }
             })
             .catch(error => {
+                // Log any error that occurs during the fetch operation
                 console.error("Error fetching data:", error);
             });
 
-        // Function to display the game data in a table
+        /* Function to display the fetched game data in a table */
         function displayGameData(gameData) {
             const tableBody = document.querySelector('#game-data-table tbody');
+            
+            // Iterate over the game data and insert each entry into the table
             gameData.forEach(entry => {
                 const row = document.createElement('tr');
                 row.innerHTML = `
@@ -110,15 +119,20 @@
             });
         }
 
-        // Function to visualize the game data in a chart (Bar Chart)
+        /* Function to visualize the fetched game data in a chart using Chart.js */
         function displayChart(gameData) {
+            // Extract jump count and elapsed time data from the game entries
             const jumpCounts = gameData.map(entry => entry.jumpCount);
             const elapsedTimes = gameData.map(entry => entry.elapsedTime);
 
+            // Get the context of the canvas element to render the chart
             const ctx = document.getElementById('gameDataChart').getContext('2d');
+            
+            // Create a bar chart with the game data using Chart.js
             const gameDataChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
+                    // X-axis labels represent the submission timestamps
                     labels: gameData.map(entry => new Date(entry.submittedAt).toLocaleString()),
                     datasets: [{
                         label: 'Jump Count',
@@ -137,6 +151,7 @@
                 options: {
                     responsive: true,
                     scales: {
+                        // Y-axis begins at zero for better visualization of values
                         y: {
                             beginAtZero: true
                         }
