@@ -71,3 +71,10 @@ Refer to the `/docs` folder for detailed information on:
 - Game features
 - Setup process
 - Development guidelines
+
+### **ChatGPT links**
+- https://chatgpt.com/share/67783cf1-2a24-800d-9290-98c8946e8898
+- https://chatgpt.com/share/67783d15-4278-800d-a336-654bb7dc6300
+- https://chatgpt.com/share/67783d26-96e4-800d-93c0-4742cd0d1318
+- https://chatgpt.com/share/67783d4a-9898-800d-9f2a-07439cf00858
+- https://chatgpt.com/share/67783d5e-d148-800d-ac9c-bb53e32cc3a5
