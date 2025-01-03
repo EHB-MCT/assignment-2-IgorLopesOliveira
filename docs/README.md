@@ -52,6 +52,26 @@ This document outlines the progress and reasoning behind the development of the 
   - Wrote this documentation (`progress.md`) to detail the development process.
 - **Reasoning**: Prepared the project for submission, with clear reasoning for design choices.
 
+### **December 30, 2024**
+#### **Additional Adjustments and Debugging**
+- **Actions**:
+  - Refining player movement and interaction with in-game objects.
+  - Added feedback for events like coin pickups and player deaths.
+- **Reasoning**: Improved user experience and gameplay flow based on testing feedback.
+
+#### **Frontend and Backend Enhancements**
+- **Action**: Added validation for player data before sending it to the backend**
+  - Ensured that the backend accepts only valid game data for consistency
+  - Improved error handling for the game's frontend when submitting data
+- **Reasoning**: Enhanced data integrity and avoided potential issues with incorrect or incomplete submissions
+
+## **December 31, 2024**
+#### **Final Testing and Debugging**
+- **Action**: Conducted final tests to ensure that all systems were functioning properly.
+  - Validated that player data was accurately stored and retrieved from the database.
+  - Debugged any remaining minor issues with the game mechanics and data submission.
+- **Reasoning**: Ensured a smooth and polished user experience, preparing the project for deployment.
+
 ## Design Choices
 
 ### Backend Design
