@@ -73,7 +73,7 @@ func submit_game_data():
 	print("Sending game data: ", json_data)  # Log the data being sent
 
 	# Define the server URL where the data will be sent
-	var url = "http://localhost:5002/submit-game-data"
+	var url = "http://localhost:10000/submit-game-data"
 	var headers = ["Content-Type: application/json"]  # Set the headers to indicate JSON format
 	# Send the HTTP POST request to the server with the game data
 	var error = http_request.request(url, headers, HTTPClient.METHOD_POST, json_data)
