@@ -7,7 +7,7 @@ This is a Godot-based game integrated with a backend using MongoDB. It tracks im
 ### **Setup Instructions**
 1. **Clone the Repository**:
    ```bash
-   git clone https://github.com/your-repo.git
+   git clone https://github.com/https://github.com/EHB-MCT/assignment-2-IgorLopesOliveira.git
    ```
 2. **Backend Setup**:
    - Navigate to the backend directory:
