@@ -90,7 +90,7 @@
          * Actions: Fetches data from the backend, calls functions to display data in table and chart.
          * Outputs: Displays the game data in a table and a chart if data fetch is successful.
          */
-        fetch('http://localhost:5002/game-data')
+        fetch('http://localhost:10000/game-data')
             .then(response => response.json())
             .then(data => {
                 // If the data fetch is successful, display the data in both table and chart
