@@ -84,7 +84,12 @@
     <!-- External Chart.js library for chart visualization -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        /* Fetch game data from the backend using the API */
+        /**
+         * Fetch game data from the backend API and visualize it.
+         * Inputs: None
+         * Actions: Fetches data from the backend, calls functions to display data in table and chart.
+         * Outputs: Displays the game data in a table and a chart if data fetch is successful.
+         */
         fetch('http://localhost:5002/game-data')
             .then(response => response.json())
             .then(data => {
@@ -101,7 +106,12 @@
                 console.error("Error fetching data:", error);
             });
 
-        /* Function to display the fetched game data in a table */
+        /**
+         * Display the fetched game data in a table format.
+         * Inputs: gameData (array of game data objects)
+         * Actions: Loops over the game data and inserts rows into the table.
+         * Outputs: Table is populated with the game data.
+         */
         function displayGameData(gameData) {
             const tableBody = document.querySelector('#game-data-table tbody');
             
@@ -119,7 +129,12 @@
             });
         }
 
-        /* Function to visualize the fetched game data in a chart using Chart.js */
+        /**
+         * Visualize the fetched game data using Chart.js in a bar chart.
+         * Inputs: gameData (array of game data objects)
+         * Actions: Extracts jump count and elapsed time from game data and uses Chart.js to display them.
+         * Outputs: Displays a bar chart visualizing jump count and elapsed time.
+         */
         function displayChart(gameData) {
             // Extract jump count and elapsed time data from the game entries
             const jumpCounts = gameData.map(entry => entry.jumpCount);
