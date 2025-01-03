@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var game_manager = get_node("/root/Scene/GameManager")  # Adjust the path based on where your GameManager is
+@onready var game_manager = %GameManager  # Adjust the path based on where your GameManager is
 @onready var animation_player = $AnimationPlayer
 
 #/**
