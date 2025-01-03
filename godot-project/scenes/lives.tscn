@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://bt2ctknqpjdo5"]
+
+[ext_resource type="Texture2D" uid="uid://b31n7tswo8hws" path="res://assets/sprites/pixel_heart_godot.webp" id="1_3syyo"]
+[ext_resource type="Script" uid="uid://bbawm4hx6v84l" path="res://scripts/Lives.gd" id="1_naohr"]
+
+[node name="Lives" type="Node2D"]
+script = ExtResource("1_naohr")
+
+[node name="Live1" type="Sprite2D" parent="."]
+position = Vector2(44, 30)
+scale = Vector2(0.0210937, 0.0210937)
+texture = ExtResource("1_3syyo")
+
+[node name="Live2" type="Sprite2D" parent="."]
+position = Vector2(69, 30)
+scale = Vector2(0.0207031, 0.0207031)
+texture = ExtResource("1_3syyo")
+
+[node name="Live3" type="Sprite2D" parent="."]
+position = Vector2(94, 30)
+scale = Vector2(0.0206543, 0.0206543)
+texture = ExtResource("1_3syyo")
