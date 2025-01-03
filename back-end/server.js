@@ -112,7 +112,7 @@ app.get('/game-data', async (req, res) => {
 });
 
 // Set the port for the server to listen on
-const PORT = process.env.PORT || 5002; // Default to port 5002 if not specified in environment variables
+const PORT = process.env.PORT || 10000; // Default to port 5002 if not specified in environment variables
 
 /**
  *  Initialize the server and listen on the specified port.
