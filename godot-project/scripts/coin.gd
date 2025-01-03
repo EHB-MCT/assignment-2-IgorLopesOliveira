@@ -1,6 +1,6 @@
 extends Area2D
 
-@onready var game_manager = %GameManager  # Adjust the path based on where your GameManager is
+@onready var game_manager = %GameManager
 @onready var animation_player = $AnimationPlayer
 
 #/**
@@ -10,6 +10,6 @@ extends Area2D
 # * Outputs: The point is added to the game score, and the pickup animation is triggered.
 # */
 func _on_body_entered(body):
-    print("Coin collected!")
-    game_manager.add_point()  # Add a point to the game manager's score
-    animation_player.play("pickup")  # Play the "pickup" animation for visual feedback
+	print("Coin collected!")
+	game_manager.add_point()  # Add a point to the game manager's score
+	animation_player.play("pickup")  # Play the "pickup" animation for visual feedback
