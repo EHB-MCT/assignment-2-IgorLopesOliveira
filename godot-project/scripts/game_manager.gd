@@ -1,18 +1,29 @@
 extends Node
 
-# Declare variables for the game elements and data tracking
+#/**
+# * Declare variables for the game elements and data tracking
+# * @onready var score_label: Reference to the UI label that shows score.
+# * @onready var http_request: Reference to the HTTPRequest node for sending data to the server.
+# * @onready var finish_zone: Reference to the FinishZone node, used for determining when the game is over.
+# * @onready var player: Reference to the Player node, used to track player's actions.
+# */
 @onready var score_label = $ScoreLabel  # Reference to the UI label that shows score
 @onready var http_request = $"../HTTPRequest"  # Reference to the HTTPRequest node for sending data to the server
 @onready var finish_zone = $"../FinishZone"  # Reference to the FinishZone node, used for determining when the game is over
 @onready var player = $"../Player"  # Reference to the Player node, used to track player's actions
 
-# Game data variables
+#/**
+# * Game data variables for tracking score, jumps, lives, and elapsed time.
+# */
 var score = 0  # Tracks the player's score (coins collected)
 var jumps_made = 0  # Tracks the number of jumps the player has made
 var lives_left = 3  # Tracks how many lives the player has left
 var elapsed_time = 0.0  # Tracks the elapsed time since the game started
 
-# Called when the game is ready and initialized
+#/**
+# * Called when the game is ready and initialized. Checks if the HTTPRequest node exists
+# * and connects the 'request_completed' signal to handle server responses.
+# */
 func _ready():
 	# Check if the HTTPRequest node is connected
 	if http_request != null:
@@ -26,16 +37,25 @@ func _ready():
 	if not has_method("_on_HTTPRequest_request_completed"):
 		print("Error: _on_HTTPRequest_request_completed method not defined!")
 
-# Function to add a point (when the player collects a coin)
+#/**
+# * Function to add a point when the player collects a coin.
+# * Updates the score label UI to reflect the number of coins collected.
+# */
 func add_point():
 	score += 1  # Increase score by 1 for each coin collected
 	score_label.text = "You collected " + str(score) + " coins."  # Update the score UI label
 
-# Function to set the elapsed time (e.g., the time the player has been playing)
+#/**
+# * Function to set the elapsed time.
+# * Used to track how long the player has been playing the game.
+# */
 func set_elapsed_time(time):
 	elapsed_time = time  # Update the elapsed time variable
 
-# Function to submit game data to the backend (server)
+#/**
+# * Function to submit game data to the backend (server).
+# * Sends a POST request with the game data, including score, jumps, lives, and elapsed time.
+# */
 func submit_game_data():
 	jumps_made = player.jump_count  # Get the total number of jumps made by the player
 	lives_left = Livecounter.lives  # Get the number of lives left (assuming Livecounter is a node managing player lives)
@@ -64,7 +84,10 @@ func submit_game_data():
 	else:
 		print("Failed to send game data: ", error)  # Log the error if the request failed
 
-# Callback function that handles the response from the server after the HTTP request is completed
+#/**
+# * Callback function that handles the response from the server after the HTTP request is completed.
+# * Checks the response code and logs whether the submission was successful or failed.
+# */
 func _on_HTTPRequest_request_completed(result, response_code, headers, body):
 	# Check if the server responded with a successful status code (201 Created)
 	if response_code == 201:

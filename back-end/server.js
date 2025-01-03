@@ -14,7 +14,12 @@ const client = new MongoClient(process.env.FINAL_URL);
 app.use(cors({ origin: 'http://127.0.0.1:5500' })); // Only allow requests from this domain (can be expanded for production)
 app.use(express.json()); // Parse JSON data from incoming requests
 
-// POST endpoint to submit game data to the database
+/**
+ *  POST endpoint to submit game data to the database.
+ *  Inputs: req.body (game data with jumpCount, elapsedTime, livesLeft, coinsCollected)
+ *  Actions: Validate incoming data, connect to MongoDB, insert data into the collection
+ *  Outputs: Success or error response to the client
+ */
 app.post('/submit-game-data', async (req, res) => {
     
     // Destructure game data from request body
@@ -68,7 +73,12 @@ app.post('/submit-game-data', async (req, res) => {
     }
 });
 
-// GET endpoint to retrieve game data from the database
+/**
+ *  GET endpoint to retrieve game data from the database.
+ *  Inputs: (optional) query parameters to filter data
+ *  Actions: Connect to MongoDB, retrieve data from the collection
+ *  Outputs: Retrieved game data or error response
+ */
 app.get('/game-data', async (req, res) => {
     try {
         // Connect to MongoDB
@@ -103,6 +113,13 @@ app.get('/game-data', async (req, res) => {
 
 // Set the port for the server to listen on
 const PORT = process.env.PORT || 5002; // Default to port 5002 if not specified in environment variables
+
+/**
+ *  Initialize the server and listen on the specified port.
+ *  Inputs: None
+ *  Actions: Start the server and log that it is running
+ *  Outputs: Console log indicating the server is running
+ */
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`); // Log that the server is running
 });
